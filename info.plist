@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>contactEmailRot13</key>
+	<string>enz.anqryyn@zr.pbz</string>
+	<key>contactName</key>
+	<string>Ram Nadella</string>
+	<key>description</key>
+	<string>Dash integration for TextMate
+
+Use ⌘D from anywhere to lookup the word you are in or selection in Dash. ⌘D when not in a selection or word context will let you type the term you want to lookup in Dash.
+
+Dash: "Dash gives you instant offline access to 80+ API documentation sets" 
+[http://kapeli.com/dash]</string>
+	<key>name</key>
+	<string>DashMate</string>
+	<key>uuid</key>
+	<string>983C0BAD-5AEF-4E5E-BF0F-FD7D18BEE41B</string>
+</dict>
+</plist>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>nop</string>
+	<key>command</key>
+	<string>#!/usr/bin/env ruby -wKU
+
+# target the current selection or the current
+# word if selection is empty
+def target_text
+  selection = ENV['TM_SELECTED_TEXT']
+  current_word = ENV['TM_CURRENT_WORD']
+
+  if selection.nil? || selection.empty?
+    target = current_word
+  else
+    target = selection
+  end
+end
+
+# figure out the current language from the TM_SCOPE variable
+# take something like the following string and figure out that it's ruby
+# "source.ruby attr.os-version.10.8.3 attr.untitled dyn.caret.end.document"
+def language
+  scope = ENV['TM_SCOPE']
+  sources = scope.split(" ").select {|s| s.start_with? "source."}
+  source = (sources.kind_of?(Array) &amp;&amp; sources.size &gt; 1) ? sources[0] : ""
+  scope_lang = source.split(".").last
+
+  # convert TM source name to Dash docset keyword
+  # http://kapeli.com/guide/guide#searchProfiles
+  language_map = {
+    "js"     =&gt; "javascript",
+    "java"   =&gt; "java7",
+    "python" =&gt; "python2"
+  }
+
+  if scope_lang.nil?
+    return ""
+  else
+    lang = language_map.has_key?(scope_lang) ? language_map[scope_lang] : scope_lang
+    return "#{lang}:"
+  end
+end
+
+command = "open dash://#{language}#{target_text}"
+# run the command
+system command
+</string>
+	<key>input</key>
+	<string>none</string>
+	<key>inputFormat</key>
+	<string>text</string>
+	<key>keyEquivalent</key>
+	<string>@d</string>
+	<key>name</key>
+	<string>Documentation for Word / Selection</string>
+	<key>outputCaret</key>
+	<string>afterOutput</string>
+	<key>outputFormat</key>
+	<string>text</string>
+	<key>outputLocation</key>
+	<string>discard</string>
+	<key>uuid</key>
+	<string>BB3ADBCA-7CAE-46A2-9A21-0D12EF6F7C9D</string>
+	<key>version</key>
+	<integer>2</integer>
+</dict>
+</plist>
