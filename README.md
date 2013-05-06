@@ -10,7 +10,7 @@ To install, clone this repository into the Bundles folder.
 
 **TextMate 2**
 ```
-git clone git@github.com:ram-nadella/DashMate.tmbundle.git ~/Library/Application\ Support/Avian/Bundles/
+git clone git@github.com:ram-nadella/DashMate.tmbundle.git ~/Library/Application\ Support/Avian/Bundles/DashMate.tmbundle
 ```
 
 (Don't forget to install Dash if you don't have it already)
