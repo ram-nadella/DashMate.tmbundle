@@ -4,7 +4,7 @@
 
 "Dash gives you instant offline access to 80+ API documentation sets"
 
-## Installtion
+## Installation
 
 To install, clone this repository into the Bundles folder.
 
