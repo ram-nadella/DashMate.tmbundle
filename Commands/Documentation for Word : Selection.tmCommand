@@ -34,7 +34,9 @@ def language
   language_map = {
     "js"     =&gt; "javascript",
     "java"   =&gt; "java7",
-    "python" =&gt; "python2"
+    "python" =&gt; "python2",
+    "c++"    =&gt; "cpp",
+    "qt"     =&gt; "qt4"
   }
 
   if scope_lang.nil?
