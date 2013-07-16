@@ -39,7 +39,11 @@ def language
     "qt"     =&gt; "qt4"
   }
 
-  if scope_lang.nil?
+  # create a list of exceptions where we do not want to
+  # pass the lang scope to the command line Dash command
+  lang_exceptions = ["coffee"]
+
+  if (scope_lang.nil? || lang_exceptions.include?(scope_lang))
     return ""
   else
     lang = language_map.has_key?(scope_lang) ? language_map[scope_lang] : scope_lang
