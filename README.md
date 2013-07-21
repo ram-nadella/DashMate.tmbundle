@@ -16,7 +16,7 @@ Make sure the Bundles directory exists
 
 Clone the bundle
 
-```git clone git@github.com:ram-nadella/DashMate.tmbundle.git ~/Library/Application\ Support/Avian/Bundles/DashMate.tmbundle```
+```git clone https://github.com/ram-nadella/DashMate.tmbundle.git ~/Library/Application\ Support/Avian/Bundles/DashMate.tmbundle```
 
 ### TextMate 1
 
@@ -26,7 +26,7 @@ Make sure the Bundles directory exists
 
 Clone the bundle
 
-```git clone git@github.com:ram-nadella/DashMate.tmbundle.git ~/Library/Application\ Support/TextMate/Bundles/DashMate.tmbundle```
+```git clone https://github.com/ram-nadella/DashMate.tmbundle.git ~/Library/Application\ Support/TextMate/Bundles/DashMate.tmbundle```
 
 ### Alternate method
 
