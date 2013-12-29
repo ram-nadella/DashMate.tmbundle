@@ -48,7 +48,8 @@ You can also install the bundle by just downloading and double clicking it
 
 ## Usage
 
-The key combination ⌘D from any file will lookup the current word or selection in Dash. ⌘D when not in a selection or word context will let you type the term you want to lookup in Dash.
+* ⌘D will lookup the current word or selection in Dash
+* ^D will lookup the current word or selection in Dash and automatically enable/disable docsets based on your current language scope
 
 ## Contributions
 
