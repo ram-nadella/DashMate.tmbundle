@@ -10,7 +10,7 @@
 	<string>Dash integration for TextMate
 
 Use ⌘D to lookup the current word or selection in Dash
-Use ^D to lookup the current word or selection in Dash and automatically enable/disable docsets based on your current language scope
+Use ⌥D to lookup the current word or selection in Dash and automatically enable/disable docsets based on your current language scope
 
 Dash: "Dash gives you instant offline access to 80+ API documentation sets" 
 [http://kapeli.com/dash]</string>

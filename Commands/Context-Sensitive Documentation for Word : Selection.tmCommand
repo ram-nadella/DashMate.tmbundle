@@ -75,7 +75,7 @@ system command
 	<key>inputFormat</key>
 	<string>text</string>
 	<key>keyEquivalent</key>
-	<string>^d</string>
+	<string>~d</string>
 	<key>name</key>
 	<string>Context-Sensitive Documentation for Word / Selection</string>
 	<key>outputCaret</key>
