@@ -12,8 +12,8 @@ Download the [latest version](https://github.com/Kapeli/DashMate.tmbundle/releas
 
 ## Usage
 
-* `⌘D` will lookup the current word or selection in Dash
-* `⌥D` will lookup the current word or selection in Dash and automatically enable/disable docsets based on your current language scope
+* `⌘+D` will lookup the current word or selection in Dash
+* `⌥+D` will lookup the current word or selection in Dash and automatically enable/disable docsets based on your current language scope
 
 ## Contributions
 
