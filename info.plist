@@ -9,7 +9,8 @@
 	<key>description</key>
 	<string>Dash integration for TextMate
 
-Use ⌘D from anywhere to lookup the word you are in or selection in Dash. ⌘D when not in a selection or word context will let you type the term you want to lookup in Dash.
+Use ⌘D to lookup the current word or selection in Dash
+Use ⌥D to lookup the current word or selection in Dash and automatically enable/disable docsets based on your current language scope
 
 Dash: "Dash gives you instant offline access to 80+ API documentation sets" 
 [http://kapeli.com/dash]</string>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>nop</string>
+	<key>command</key>
+	<string>#!/usr/bin/env ruby -wKU
+
+require 'cgi'
+
+# target the current selection or the current
+# word if selection is empty
+def target_text
+  selection = ENV['TM_SELECTED_TEXT']
+  current_word = ENV['TM_CURRENT_WORD']
+
+  if selection.nil? || selection.empty?
+    target = CGI.escape(current_word)
+  else
+    target = CGI.escape(selection)
+  end
+end
+
+# figure out the current language from the TM_SCOPE variable
+# take something like the following string and figure out that it's ruby
+# "source.ruby attr.os-version.10.8.3 attr.untitled dyn.caret.end.document"
+def language
+  scope = ENV['TM_SCOPE']
+  sources = scope.split(" ").select {|s| s.start_with? "source."}
+  source = (sources.kind_of?(Array) &amp;&amp; sources.size &gt;= 1) ? sources[0] : ""
+  scope_lang = source.split(".").last
+
+  # convert TM source name to Dash docset keyword
+  # http://kapeli.com/guide/guide#searchProfiles
+  language_map = {
+    "c"               =&gt; "c,glib,gl2,gl3,gl4,manpages",
+    "c++"             =&gt; "cpp,net,boost,qt,cvcpp,cocos2dx,c,manpages",
+    "c#"              =&gt; "net,mono,unity3d",
+    "css"             =&gt; "css,bootstrap,foundation,less,cordova,phonegap",
+    "html"            =&gt; "html,svg,css,bootstrap,foundation,javascript,jquery,jqueryui,jquerym,angularjs,backbone,marionette,meteor,moo,prototype,ember,lodash,underscore,sencha,extjs,knockout,zepto,cordova,phonegap,yui",
+    "java"            =&gt; "java,javafx,grails,groovy,playjava,spring,cvj,processing",
+    "java-properties" =&gt; "java,javafx,grails,groovy,playjava,spring,cvj,processing",
+    "jsp"             =&gt; "java,javafx,grails,groovy,playjava,spring,cvj,processing",
+    "js"              =&gt; "javascript,jquery,jqueryui,jquerym,backbone,marionette,meteor,sproutcore,moo,prototype,bootstrap,foundation,lodash,underscore,ember,sencha,extjs,knockout,zepto,yui,d3,svg,dojo,coffee,nodejs,express,chai,html,css,cordova,phonegap,unity3d",
+    "lua"             =&gt; "lua,corona",
+    "mod-perl"        =&gt; "perl,manpages",
+    "objc"            =&gt; "iphoneos,macosx,appledoc,cocos2d,cocos3d,kobold2d,sparrow,c,manpages",
+    "objc++"          =&gt; "cpp,iphoneos,macosx,appledoc,cocos2dx,cocos2d,cocos3d,kobold2d,sparrow,c,manpages",
+    "php"             =&gt; "php,wordpress,drupal,zend,laravel,yii,joomla,ee,codeigniter,cakephp,symfony,typo3,twig,smarty,html,mysql,sqlite,mongodb,psql,redis",
+    "python"          =&gt; "python,django,twisted,sphinx,flask,cvp",
+    "ruby"            =&gt; "ruby,rubygems,rails",
+    "shell"           =&gt; "bash,manpages",
+    "sql"             =&gt; "mysql,sqlite,psql",
+  }
+
+  # create a list of exceptions where we do not want to
+  # pass the lang scope to the command line Dash command
+  lang_exceptions = ["coffee"]
+
+  if (scope_lang.nil? || lang_exceptions.include?(scope_lang))
+    return ""
+  else
+    lang = language_map.has_key?(scope_lang) ? language_map[scope_lang] : scope_lang
+    return "#{lang}"
+  end
+end
+
+command = "open dash-plugin://keys=#{language}\\&amp;query=#{target_text}"
+# run the command
+system command
+</string>
+	<key>input</key>
+	<string>none</string>
+	<key>inputFormat</key>
+	<string>text</string>
+	<key>keyEquivalent</key>
+	<string>~d</string>
+	<key>name</key>
+	<string>Context-Sensitive Documentation for Word / Selection</string>
+	<key>outputCaret</key>
+	<string>afterOutput</string>
+	<key>outputFormat</key>
+	<string>text</string>
+	<key>outputLocation</key>
+	<string>discard</string>
+	<key>uuid</key>
+	<string>2E2D93CC-8D2B-415E-8A4E-223726CDCD24</string>
+	<key>version</key>
+	<integer>2</integer>
+</dict>
+</plist>

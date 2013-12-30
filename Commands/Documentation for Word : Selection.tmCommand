@@ -7,6 +7,8 @@
 	<key>command</key>
 	<string>#!/usr/bin/env ruby -wKU
 
+require 'cgi'
+
 # target the current selection or the current
 # word if selection is empty
 def target_text
@@ -14,44 +16,13 @@ def target_text
   current_word = ENV['TM_CURRENT_WORD']
 
   if selection.nil? || selection.empty?
-    target = current_word
+    target = CGI.escape(current_word)
   else
-    target = selection
+    target = CGI.escape(selection)
   end
 end
 
-# figure out the current language from the TM_SCOPE variable
-# take something like the following string and figure out that it's ruby
-# "source.ruby attr.os-version.10.8.3 attr.untitled dyn.caret.end.document"
-def language
-  scope = ENV['TM_SCOPE']
-  sources = scope.split(" ").select {|s| s.start_with? "source."}
-  source = (sources.kind_of?(Array) &amp;&amp; sources.size &gt;= 1) ? sources[0] : ""
-  scope_lang = source.split(".").last
-
-  # convert TM source name to Dash docset keyword
-  # http://kapeli.com/guide/guide#searchProfiles
-  language_map = {
-    "js"     =&gt; "javascript",
-    "java"   =&gt; "java7",
-    "python" =&gt; "python2",
-    "c++"    =&gt; "cpp",
-    "qt"     =&gt; "qt4"
-  }
-
-  # create a list of exceptions where we do not want to
-  # pass the lang scope to the command line Dash command
-  lang_exceptions = ["coffee"]
-
-  if (scope_lang.nil? || lang_exceptions.include?(scope_lang))
-    return ""
-  else
-    lang = language_map.has_key?(scope_lang) ? language_map[scope_lang] : scope_lang
-    return "#{lang}:"
-  end
-end
-
-command = "open dash://#{language}#{target_text}"
+command = "open dash://#{target_text}"
 # run the command
 system command
 </string>
