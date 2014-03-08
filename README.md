@@ -6,7 +6,7 @@
 
 ## Installation
 
-Download the [latest version](https://github.com/Kapeli/DashMate.tmbundle/releases/download/1.0.0/DashMate.zip) of this plugin, unarchive and double click DashMate.tmbundle to install.
+Download the [latest version](https://github.com/ram-nadella/DashMate.tmbundle/releases) of this plugin, unarchive and double click DashMate.tmbundle to install.
 
 (Don't forget to install Dash if you don't have it already)
 
