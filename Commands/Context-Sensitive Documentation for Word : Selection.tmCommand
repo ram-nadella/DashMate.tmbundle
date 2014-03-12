@@ -42,7 +42,7 @@ def language
     "java"            =&gt; "java,javafx,grails,groovy,playjava,spring,cvj,processing",
     "java-properties" =&gt; "java,javafx,grails,groovy,playjava,spring,cvj,processing",
     "jsp"             =&gt; "java,javafx,grails,groovy,playjava,spring,cvj,processing",
-    "js"              =&gt; "javascript,jquery,jqueryui,jquerym,backbone,marionette,meteor,sproutcore,moo,prototype,bootstrap,foundation,lodash,underscore,ember,sencha,extjs,knockout,zepto,yui,d3,svg,dojo,coffee,nodejs,express,chai,html,css,cordova,phonegap,unity3d",
+    "js"              =&gt; "javascript,jquery,jqueryui,jquerym,backbone,marionette,meteor,sproutcore,moo,prototype,bootstrap,foundation,lodash,underscore,ember,sencha,extjs,knockout,zepto,yui,d3,svg,dojo,coffee,nodejs,express,mongoose,grunt,chai,html,css,cordova,phonegap,unity3d",
     "lua"             =&gt; "lua,corona",
     "mod-perl"        =&gt; "perl,manpages",
     "objc"            =&gt; "iphoneos,macosx,appledoc,cocos2d,cocos3d,kobold2d,sparrow,c,manpages",
@@ -50,6 +50,7 @@ def language
     "php"             =&gt; "php,wordpress,drupal,zend,laravel,yii,joomla,ee,codeigniter,cakephp,symfony,typo3,twig,smarty,html,mysql,sqlite,mongodb,psql,redis",
     "python"          =&gt; "python,django,twisted,sphinx,flask,cvp",
     "ruby"            =&gt; "ruby,rubygems,rails",
+    "rust"            =&gt; "rust",
     "shell"           =&gt; "bash,manpages",
     "sql"             =&gt; "mysql,sqlite,psql",
   }
