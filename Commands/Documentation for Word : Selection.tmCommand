@@ -9,22 +9,30 @@
 
 require 'cgi'
 
+def nil_or_empty(str)
+  return str.nil? || str.empty?
+end
+
 # target the current selection or the current
 # word if selection is empty
 def target_text
   selection = ENV['TM_SELECTED_TEXT']
   current_word = ENV['TM_CURRENT_WORD']
 
-  if selection.nil? || selection.empty?
+  if !nil_or_empty(selection)
+    target = CGI.escape(selection)
+  elsif !nil_or_empty(current_word)
     target = CGI.escape(current_word)
   else
-    target = CGI.escape(selection)
+    return ""
   end
 end
 
-command = "open dash://#{target_text}"
-# run the command
-system command
+if !nil_or_empty(target_text)
+  command = "open dash://#{target_text}"
+  # run the command
+  system command
+end
 </string>
 	<key>input</key>
 	<string>none</string>
