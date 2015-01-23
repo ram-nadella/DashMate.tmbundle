@@ -89,7 +89,6 @@ end
 
 command = "open dash-plugin://keys=#{language}\\&amp;query=#{target_text}"
 # run the command
-puts command
 system command
 </string>
 	<key>input</key>
