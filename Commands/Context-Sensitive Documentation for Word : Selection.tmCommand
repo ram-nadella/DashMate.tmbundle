@@ -16,7 +16,11 @@ def target_text
   current_word = ENV['TM_CURRENT_WORD']
 
   if selection.nil? || selection.empty?
-    target = CGI.escape(current_word)
+    if current_word.nil?
+      target = ""
+    else
+      target = CGI.escape(current_word)
+    end
   else
     target = CGI.escape(selection)
   end
