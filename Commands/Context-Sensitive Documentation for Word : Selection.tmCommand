@@ -43,7 +43,7 @@ def language
     "java"            =&gt; "java,javafx,grails,groovy,playjava,spring,cvj,processing,javadoc",
     "java-properties" =&gt; "java,javafx,grails,groovy,playjava,spring,cvj,processing,javadoc",
     "jsp"             =&gt; "java,javafx,grails,groovy,playjava,spring,cvj,processing,javadoc",
-    "js"              =&gt; "javascript,jquery,jqueryui,jquerym,backbone,marionette,meteor,sproutcore,moo,prototype,bootstrap,foundation,lodash,underscore,ember,sencha,extjs,knockout,zepto,yui,d3,svg,dojo,coffee,nodejs,express,mongoose,moment,require,awsjs,jasmine,sinon,grunt,chai,html,css,cordova,phonegap,unity3d",
+    "js"              =&gt; "javascript,jquery,jqueryui,jquerym,backbone,marionette,meteor,sproutcore,moo,prototype,bootstrap,foundation,lodash,underscore,ember,sencha,extjs,knockout,zepto,yui,d3,svg,dojo,coffee,node,nodejs,express,mongoose,moment,require,awsjs,jasmine,sinon,grunt,chai,html,css,cordova,phonegap,unity3d",
     "lua"             =&gt; "lua,corona",
     "mod-perl"        =&gt; "perl,manpages",
     "objc"            =&gt; "iphoneos,macosx,appledoc,cocos2d,cocos3d,kobold2d,sparrow,c,manpages",
