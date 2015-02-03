@@ -16,7 +16,11 @@ def target_text
   current_word = ENV['TM_CURRENT_WORD']
 
   if selection.nil? || selection.empty?
-    target = CGI.escape(current_word)
+    if current_word.nil?
+      target = ""
+    else
+      target = CGI.escape(current_word)
+    end
   else
     target = CGI.escape(selection)
   end
@@ -26,10 +30,6 @@ end
 # take something like the following string and figure out that it's ruby
 # "source.ruby attr.os-version.10.8.3 attr.untitled dyn.caret.end.document"
 def language
-  scope = ENV['TM_SCOPE']
-  sources = scope.split(" ").select {|s| s.start_with? "source."}
-  source = (sources.kind_of?(Array) &amp;&amp; sources.size &gt;= 1) ? sources[0] : ""
-  scope_lang = source.split(".").last
 
   # convert TM source name to Dash docset keyword
   # http://kapeli.com/guide/guide#searchProfiles
@@ -60,12 +60,31 @@ def language
   # pass the lang scope to the command line Dash command
   lang_exceptions = ["coffee"]
 
-  if (scope_lang.nil? || lang_exceptions.include?(scope_lang))
-    return ""
-  else
-    lang = language_map.has_key?(scope_lang) ? language_map[scope_lang] : scope_lang
-    return "#{lang}"
-  end
+  # Identify "source" scopes; ones that represent languages
+  source_scopes = ENV['TM_SCOPE'].split(" ").select {|s| s.start_with? "source."}
+
+  # Restructure to match key format in language_map
+  # Examples:
+  # []                                          =&gt; []
+  # ["source.language"]                         =&gt; ["language"]
+  # ["source.language.dialect"]                 =&gt; ["language.dialect", "language"]
+  # ["source.language", "source.otherlanguage"] =&gt; ["language", "other_language"]
+  #
+  language_scopes = (source_scopes || []).map do |source|
+    lang = source.split(".").slice(1..-1)
+    lang.map.with_index do |x, i|
+      (lang.slice(0, i) + [x]).join('.')
+    end.reverse
+  end.flatten
+
+  # Filter out anything in the lang_exceptions list
+  language_scopes = language_scopes.reject { |l| lang_exceptions.include?(l) }
+  puts language_scopes.inspect
+
+  # Lookup the docsets for each language
+  docsets = language_scopes.map { |l| language_map[l] || l }.join(',')
+
+  return "#{docsets}"
 end
 
 command = "open dash-plugin://keys=#{language}\\&amp;query=#{target_text}"
