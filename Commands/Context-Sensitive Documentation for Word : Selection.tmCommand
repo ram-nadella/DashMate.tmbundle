@@ -87,7 +87,7 @@ def language
   return "#{docsets}"
 end
 
-command = "open dash-plugin://keys=#{language}\\&amp;query=#{target_text}"
+command = "open -g dash-plugin://keys=#{language}\\&amp;query=#{target_text}"
 # run the command
 system command
 </string>

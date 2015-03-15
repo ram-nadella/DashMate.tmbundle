@@ -22,7 +22,7 @@ def target_text
   end
 end
 
-command = "open dash://#{target_text}"
+command = "open -g dash://#{target_text}"
 # run the command
 system command
 </string>
